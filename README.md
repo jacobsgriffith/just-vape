@@ -1,2 +1,2 @@
 # fadboard-phonegap
-Fadboard management dashboard phone application
+Fadboard management dashboard phonegap application
