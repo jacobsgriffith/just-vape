@@ -20,10 +20,41 @@ module.exports = function (grunt) {
     app: require('./bower.json').appPath || 'app',
     dist: 'dist'
   };
-
+  grunt.loadNpmTasks('grunt-contrib-compress');
+  grunt.loadNpmTasks('grunt-phonegap-build');
+  
   // Define the configuration for all the tasks
   grunt.initConfig({
-
+	'phonegap-build': {
+      options: {
+        archive: 'app.zip',
+        'appId': '1466007',
+        'user': {
+          'email': 'jgriffith@fadboard.com',
+          'password': 'Beta343#'
+        },
+		download: {
+			winphone: 'bin/windowsphone.xap',
+			android: 'bin/android.xap'
+		}
+      },
+	  download: {
+			winphone: 'bin/windowsphone.xap',
+			android: 'bin/android.xap'
+		}
+    },
+	compress: {
+		main: {
+			options: {
+			  archive: 'app.zip'
+			},
+			expand: true,
+			cwd: 'dist',
+			src: ['**/*'],
+			dest: ''
+		}
+	},
+  
     // Project settings
     yeoman: appConfig,
 
@@ -439,6 +470,7 @@ module.exports = function (grunt) {
   grunt.registerTask('default', [
     'newer:jshint',
     'test',
-    'build'
+    'build',
+	'compress phonegap-build'
   ]);
 };
