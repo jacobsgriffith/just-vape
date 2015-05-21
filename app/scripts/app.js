@@ -17,7 +17,7 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $compileProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -30,4 +30,6 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+	  $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|ghttps?|ms-appx|x-wmapp0):/);
+	  //$compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
   });

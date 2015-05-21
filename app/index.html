@@ -15,12 +15,12 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="fadboardAppApp">
+  <body id="fadboardAppApp">
 	<script type="text/javascript">
-		console.log("Subscribing...");
-		document.addEventListener("deviceready", function () {
-			navigator.notification.alert("The device is ready!");
-		});
+		document.addEventListener("deviceready", function() {
+			var domElement = document.getElementById('fadboardAppApp');
+			angular.bootstrap(domElement, ["fadboardAppApp"]);
+		}, false);
 	</script>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -57,7 +57,6 @@
     <div class="container">
     <div ng-view=""></div>
     </div>
-
     <div class="footer">
       <div class="container">
         <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
@@ -75,7 +74,7 @@
        ga('create', 'UA-XXXXX-X');
        ga('send', 'pageview');
     </script>
-
+	<script type="text/javascript" src="cordova.js"></script>
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -88,10 +87,11 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <!-- endbower -->
-    <!-- endbuild -->  
+    <!-- endbuild -->
 
 	<!-- build:js({.tmp,app}) scripts/scripts.js -->
 	<script src="scripts/app.js"></script>
+	<script src="scripts/services/cordovaready.js"></script>
 	<script src="scripts/controllers/main.js"></script>
 	<script src="scripts/controllers/about.js"></script>
 	<!-- endbuild -->
