@@ -18,8 +18,12 @@ angular.module('fadboardAppApp').factory("UsersApi", ['$q', '$http', function($q
 			//responseType: 'arraybuffer'
 		}).success(function(data, status, headers, config) {
 		//$http.post('http://fadboard.com/cmsadmin/logintest.php', 'login_util=' + email + '&pass_util=' + password).success(function(data, status, headers, config) {
-			if (data.indexOf('true') != -1) {
-				deferred.resolve({name: 'Admin'});
+			if (data) {
+				if (data.indexOf('true') != -1) {
+					deferred.resolve({name: 'Admin'});
+				} else {
+					deferred.reject();
+				}
 			} else {
 				deferred.reject();
 			}

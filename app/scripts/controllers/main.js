@@ -7,10 +7,21 @@
  * # MainCtrl
  * Controller of the fadboardAppApp
  */
-angular.module('fadboardAppApp').controller('MainCtrl', ['$scope', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  }]);
+angular.module('fadboardAppApp').controller('MainCtrl', ['$scope', '$state', function ($scope, $state) {
+    if ($scope.currentUser) {
+		document.addEventListener("backbutton", function () { 
+			 navigator.notification.confirm(
+				 'Do you want to quit?', 
+				 onConfirmQuit, 
+				 'Exit', 
+				 'OK,Cancel'  
+			 );
+		 }, true);
+		 
+		function onConfirmQuit(button){
+			if(button == "1"){
+				navigator.app.exitApp(); 
+			}
+		}
+	}
+}]);

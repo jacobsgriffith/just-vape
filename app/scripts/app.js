@@ -17,15 +17,15 @@ angular
 	'ui.router',
 	'ngSanitize',
 	'ngTouch'
-	]).config(function (/*$routeProvider, */$compileProvider, $stateProvider, $httpProvider) {
+	]).config(function (/*$routeProvider, */$compileProvider, $stateProvider, $httpProvider, $urlRouterProvider) {
 	
 		$stateProvider
 		.state('home', {
-			url: "/",
-			templateUrl: "views/main.html",
-			controller: 'MainCtrl',
+			url: "/home",
+			templateUrl: "views/home.html",
+			controller: 'HomeCtrl',
 			data: {
-				requireLogin: false
+				requireLogin: true
 			}
 		})
 		.state('about', {
@@ -35,8 +35,16 @@ angular
 			data: {
 				requireLogin: true
 			}
+		})
+		.state('main', {
+			url: "/main",
+			templateUrl: "views/main.html",
+			controller: 'MainCtrl',
+			data: {
+				requireLogin: false
+			}
 		});
-	
+		$urlRouterProvider.otherwise('/main');
 	
 		/*$routeProvider.when('/', {
 			templateUrl: 'views/main.html',
