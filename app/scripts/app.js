@@ -20,10 +20,10 @@ angular
 	]).config(function (/*$routeProvider, */$compileProvider, $stateProvider, $httpProvider, $urlRouterProvider) {
 	
 		$stateProvider
-		.state('home', {
-			url: "/home",
-			templateUrl: "views/home.html",
-			controller: 'HomeCtrl',
+		.state('dashboard', {
+			url: "/dashboard",
+			templateUrl: "views/dashboard.html",
+			controller: 'DashboardCtrl',
 			data: {
 				requireLogin: true
 			}
@@ -99,7 +99,7 @@ angular
 				deferred.resolve( $http(rejection.config) );
 			  })
 			  .catch(function () {
-				$state.go('home');
+				$state.go('dashboard');
 				deferred.reject(rejection);
 			  });
 
@@ -116,7 +116,7 @@ angular
 				loginModal().then(function () {
 					return $state.go(toState.name, toParams);
 				}).catch(function () {
-					return $state.go('home');
+					return $state.go('dashboard');
 				});
 			}
 		});

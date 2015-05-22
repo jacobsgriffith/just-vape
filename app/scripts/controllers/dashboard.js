@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of the fadboardAppApp
  */
-angular.module('fadboardAppApp').controller('HomeCtrl', ['$scope', function ($scope) {
+angular.module('fadboardAppApp').controller('DashboardCtrl', ['$scope', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

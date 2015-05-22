@@ -5,12 +5,12 @@ angular.module('fadboardAppApp').service('loginModal', function ($modal, $rootSc
 	}
 	return function() {
 		var instance = $modal.open({
+			animation: true,
 			templateUrl: 'views/loginModalTemplate.html',
 			controller: 'LoginModalCtrl',
-			controllerAs: 'LoginModalCtrl'
-		})
-
+			controllerAs: 'LoginModalCtrl',
+			size: 'sm'
+		});
 		return instance.result.then(assignCurrentUser);
 	};
-
 });

@@ -16,6 +16,7 @@
     <!-- endbuild -->
   </head>
   <body id="fadboardAppApp">
+	<a style="position: absolute; top: 0; left: 0;" href="#" onclick="var e = document.createEvent('Events'); e.initEvent('deviceready', true, false); document.dispatchEvent(e); return false;">Start Device</a>
 	<script type="text/javascript">
 		document.addEventListener("deviceready", function() {
 			var domElement = document.getElementById('fadboardAppApp');
@@ -27,43 +28,11 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-			<img src="images/logo.jpg" alt="Logo" style="float: left; width: 30px; height: 30px; margin: 10px;"/>
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-            <a class="navbar-brand" href="#/">fadboardApp</a>
-          </div>
-
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a ui-sref="home">Home</a></li>
-              <li><a ui-sref="about">About</a></li>
-              <li><a ui-sref="home">Contact</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
+	<div class="container-fluid" style="background-color: rgb(33, 34, 34);">
+		<img src="images/logo.jpg" alt="Logo" style="position: absolute; width: 30px; height: 30px; margin: 10px;">
+		<h2 class="text-center">Dashboard</h2>
+		<div class="row" ui-view></div>
     </div>
-
-    <div class="container">
-    <div ui-view></div>
-    </div>
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
-    </div>
-
-
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
@@ -97,7 +66,7 @@
 	<script src="scripts/services/user.js"></script>
 	<script src="scripts/services/loginService.js"></script>
 	<script src="scripts/controllers/main.js"></script>
-	<script src="scripts/controllers/home.js"></script>
+	<script src="scripts/controllers/dashboard.js"></script>
 	<script src="scripts/controllers/about.js"></script>
 	<script src="scripts/controllers/login.js"></script>
 	<!-- endbuild -->
