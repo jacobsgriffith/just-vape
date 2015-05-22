@@ -10,15 +10,14 @@
  */
 angular
 	.module('fadboardAppApp', [
-	'ngAnimate',
-	'ngCookies',
-	'ngResource',
-	'ui.bootstrap',
-	'ui.router',
-	'ngSanitize',
-	'ngTouch'
-	]).config(function (/*$routeProvider, */$compileProvider, $stateProvider, $httpProvider, $urlRouterProvider) {
-	
+		'ngAnimate',
+		'ngCookies',
+		'ngResource',
+		'ui.bootstrap',
+		'ui.router',
+		'ngSanitize',
+		'ngTouch'
+	]).config(function ($compileProvider, $stateProvider, $httpProvider, $urlRouterProvider) {
 		$stateProvider
 		.state('dashboard', {
 			url: "/dashboard",
@@ -32,6 +31,14 @@ angular
 			url: "/about",
 			templateUrl: "views/about.html",
 			controller: 'AboutCtrl',
+			data: {
+				requireLogin: true
+			}
+		})
+		.state('notifications', {
+			url: "/notifications",
+			templateUrl: "views/notifications.html",
+			controller: 'NotificationsCtrl',
 			data: {
 				requireLogin: true
 			}

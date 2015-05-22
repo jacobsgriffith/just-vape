@@ -7,10 +7,8 @@
  * # MainCtrl
  * Controller of the fadboardAppApp
  */
-angular.module('fadboardAppApp').controller('DashboardCtrl', ['$scope', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  }]);
+angular.module('fadboardAppApp').controller('DashboardCtrl', ['$scope', '$state', function ($scope, $state) {
+	$scope.navigateTo = function(state) {
+		$state.go(state);
+	}
+}]);

@@ -7,23 +7,16 @@
 angular.module('fadboardAppApp').factory("UsersApi", ['$q', '$http', function($q, $http) {
 	function _login(email, password) {
 		var deferred = $q.defer();
-		$http({
-			method: 'POST',
-			url: 'http://fadboard.com/cmsadmin/logintest.php',
-			headers: {
-				'Content-type': 'application/x-www-form-urlencoded',
-				'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
-			},
-			data: 'login_util=' + email + '&pass_util=' + password
-			//responseType: 'arraybuffer'
+		$http.post('http://fadboard.com/AppManager/api/login/', {
+			email: email,
+			password: password
 		}).success(function(data, status, headers, config) {
-		//$http.post('http://fadboard.com/cmsadmin/logintest.php', 'login_util=' + email + '&pass_util=' + password).success(function(data, status, headers, config) {
-			if (data) {
-				if (data.indexOf('true') != -1) {
-					deferred.resolve({name: 'Admin'});
-				} else {
+			if (data == true) {
+				$http.get('http://fadboard.com/AppManager/api/user/').success(function(data) {
+					deferred.resolve(data);
+				}).error(function(data, status, headers, config) {
 					deferred.reject();
-				}
+				});
 			} else {
 				deferred.reject();
 			}
