@@ -1,8 +1,11 @@
+'use strict';
+
 angular.module('fadboardAppApp').service('loginModal', function ($modal, $rootScope) {
 	function assignCurrentUser (user) {
 		$rootScope.currentUser = user;
 		return user;
 	}
+	
 	return function() {
 		var instance = $modal.open({
 			animation: true,

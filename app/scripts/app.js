@@ -19,68 +19,63 @@ angular
 		'ngTouch'
 	]).config(function ($compileProvider, $stateProvider, $httpProvider, $urlRouterProvider) {
 		$stateProvider
-		.state('dashboard', {
+		.state('root', {
+			url: '',
+			views: {
+				'header': {
+					templateUrl: 'views/header.html',
+					controller: 'HeaderCtrl'
+				},
+				'footer': {
+					templateUrl: 'views/footer.html'
+				},
+				'container': {
+					templateUrl: 'views/container.html'
+				}
+			},
+			data: {
+				requireLogin: false,
+				settings: {
+				   displayName: 'Home'
+			   }
+			}
+		})
+		.state('root.dashboard', {
 			url: "/dashboard",
 			templateUrl: "views/dashboard.html",
 			controller: 'DashboardCtrl',
 			data: {
-				requireLogin: true
+				requireLogin: true,
+				settings: {
+				   displayName: 'Dashboard'
+			   }
 			}
 		})
-		.state('about', {
-			url: "/about",
-			templateUrl: "views/about.html",
-			controller: 'AboutCtrl',
-			data: {
-				requireLogin: true
-			}
-		})
-		.state('notifications', {
+		.state('root.notifications', {
 			url: "/notifications",
 			templateUrl: "views/notifications.html",
 			controller: 'NotificationsCtrl',
 			data: {
-				requireLogin: true
+				requireLogin: true,
+				settings: {
+				   displayName: 'Notifications'
+			   }
 			}
 		})
-		.state('main', {
+		.state('root.main', {
 			url: "/main",
 			templateUrl: "views/main.html",
 			controller: 'MainCtrl',
 			data: {
-				requireLogin: false
+				requireLogin: false,
+				settings: {
+				   displayName: 'Home'
+			   }
 			}
 		});
 		$urlRouterProvider.otherwise('/main');
 	
-		/*$routeProvider.when('/', {
-			templateUrl: 'views/main.html',
-			controller: 'MainCtrl'
-		}).when('/about', {
-			templateUrl: 'views/about.html',
-			controller: 'AboutCtrl'
-		}).otherwise({
-			redirectTo: '/'
-		});*/
-
 		$compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|ghttps?|ms-appx|x-wmapp0):/);
-
-		/*$stateProvider.state('welcome', {
-			url: '/welcome',
-			data: {
-				requireLogin: false
-			}
-		}).state('app', {
-			abstract: true,
-			data: {
-				requireLogin: true // this property will apply to all children of 'app'
-			}
-		})
-		.state('app.dashboard', {
-		// child state of `app`
-		// requireLogin === true
-		})*/
-		
 		
 		$httpProvider.interceptors.push(function ($timeout, $q, $injector) {
 		var loginModal, $http, $state;
@@ -106,7 +101,7 @@ angular
 				deferred.resolve( $http(rejection.config) );
 			  })
 			  .catch(function () {
-				$state.go('dashboard');
+				$state.go('root.dashboard');
 				deferred.reject(rejection);
 			  });
 
@@ -114,17 +109,21 @@ angular
 		  }
 		};
 	  });
-		
 	}).run(function ($rootScope, $state, loginModal) {
 		$rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
-		var requireLogin = toState.data.requireLogin;
-		if (requireLogin && typeof $rootScope.currentUser === 'undefined') {
-				event.preventDefault();
-				loginModal().then(function () {
-					return $state.go(toState.name, toParams);
-				}).catch(function () {
-					return $state.go('dashboard');
-				});
+		if (toState.name == 'root') {
+			event.preventDefault();
+			$state.go('root.main');
+		} else {
+			var requireLogin = toState.data.requireLogin;
+			if (requireLogin && typeof $rootScope.currentUser === 'undefined') {
+					event.preventDefault();
+					loginModal().then(function () {
+						return $state.go(toState.name, toParams);
+					}).catch(function () {
+						return $state.go('root.dashboard');
+					});
+				}
 			}
 		});
 	});

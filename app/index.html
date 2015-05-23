@@ -16,30 +16,28 @@
     <!-- endbuild -->
   </head>
   <body id="fadboardAppApp">
-	<a style="position: absolute; top: 0; left: 0;" href="#" onclick="var e = document.createEvent('Events'); e.initEvent('deviceready', true, false); document.dispatchEvent(e); return false;">Start Device</a>
+	<a id="hack" class="text-primary" style="position: absolute; top: 0; left: 0; font-size: 30px;" href="#" onclick="var e = document.createEvent('Events'); e.initEvent('deviceready', true, false); document.dispatchEvent(e); return false;">Start Device</a>
 	<script type="text/javascript">
 		document.addEventListener("deviceready", function() {
-			var domElement = document.getElementById('fadboardAppApp');
-			angular.bootstrap(domElement, ["fadboardAppApp"]);
+			setTimeout(function() {
+				document.body.removeChild(document.getElementById('hack'));
+				var domElement = document.getElementById('fadboardAppApp');
+				angular.bootstrap(domElement, ["fadboardAppApp"]);
+			}, 500);
 		}, false);
 	</script>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
     <!-- Add your site or application content here -->
-	<div class="container-fluid" style="background-color: rgb(33, 34, 34);">
-		<img src="images/logo.jpg" alt="Logo" style="position: absolute; width: 30px; height: 30px; margin: 10px;">
-		<h2 class="text-center">Dashboard</h2>
-		<div class="row" ui-view></div>
-    </div>
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
+	<div ui-view="header" style="background-color: rgb(33, 34, 34);"></div>
+	<div class="container-fluid" style="background-color: rgb(33, 34, 34);" ui-view="container"></div>
+	<div ui-view="footer" style="background-color: rgb(33, 34, 34);"></div>
+	<script>
        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
        (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
        r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
        }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
        ga('create', 'UA-XXXXX-X');
        ga('send', 'pageview');
     </script>
@@ -59,7 +57,6 @@
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-
 	<!-- build:js({.tmp,app}) scripts/scripts.js -->
 	<script src="scripts/app.js"></script>
 	<script src="scripts/services/cordovaready.js"></script>
@@ -67,8 +64,9 @@
 	<script src="scripts/services/loginService.js"></script>
 	<script src="scripts/controllers/main.js"></script>
 	<script src="scripts/controllers/dashboard.js"></script>
-	<script src="scripts/controllers/about.js"></script>
 	<script src="scripts/controllers/login.js"></script>
+	<script src="scripts/controllers/header.js"></script>
+	<script src="scripts/directives/breadcrumbs.js"></script>
 	<script src="scripts/controllers/notifications.js"></script>
 	<!-- endbuild -->
 </body>
