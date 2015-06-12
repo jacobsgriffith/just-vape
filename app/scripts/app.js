@@ -2,21 +2,22 @@
 
 /**
  * @ngdoc overview
- * @name fadboardAppApp
+ * @name justVapeApp
  * @description
- * # fadboardAppApp
+ * # justVapeApp
  *
  * Main module of the application.
  */
 angular
-	.module('fadboardAppApp', [
+	.module('justVapeApp', [
 		'ngAnimate',
 		'ngCookies',
 		'ngResource',
 		'ui.bootstrap',
 		'ui.router',
 		'ngSanitize',
-		'ngTouch'
+		'ngTouch',
+		'timer'
 	]).config(function ($compileProvider, $stateProvider, $httpProvider, $urlRouterProvider) {
 		$stateProvider
 		.state('root', {
@@ -51,14 +52,14 @@ angular
 			   }
 			}
 		})
-		.state('root.notifications', {
-			url: "/notifications",
-			templateUrl: "views/notifications.html",
-			controller: 'NotificationsCtrl',
+		.state('root.juicequeue', {
+			url: "/juicequeue",
+			templateUrl: "views/juicequeue.html",
+			controller: 'JuiceQueueCtrl',
 			data: {
 				requireLogin: true,
 				settings: {
-				   displayName: 'Notifications'
+				   displayName: 'Juice Queue'
 			   }
 			}
 		})

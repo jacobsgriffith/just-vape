@@ -28,10 +28,10 @@ module.exports = function (grunt) {
 	'phonegap-build': {
       options: {
         archive: 'app.zip',
-        'appId': '1466007',
+        'appId': '1494228',
         'user': {
-          'email': 'jgriffith@fadboard.com',
-          'password': 'Beta343#'
+          'email': 'jacobsgriffith@yahoo.com',
+          'password': 'Beta3433'
         },
 		download: {
 			winphone: 'bin/windowsphone.xap',

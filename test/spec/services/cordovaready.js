@@ -3,7 +3,7 @@
 describe('Service: CordovaReady', function () {
 
   // load the service's module
-  beforeEach(module('fadboardAppApp'));
+  beforeEach(module('justVapeApp'));
 
   // instantiate service
   var CordovaReady;

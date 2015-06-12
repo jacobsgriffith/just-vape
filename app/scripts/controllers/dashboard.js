@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name fadboardAppApp.controller:MainCtrl
+ * @name justVapeApp.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the fadboardAppApp
+ * Controller of the justVapeApp
  */
-angular.module('fadboardAppApp').controller('DashboardCtrl', ['$scope', '$state', function ($scope, $state) {
+angular.module('justVapeApp').controller('DashboardCtrl', ['$scope', '$state', function ($scope, $state) {
 	$scope.navigateTo = function(state) {
 		$state.go(state);
 	}

@@ -1,10 +1,10 @@
 'use strict';
-/*angular.module('fadboardAppApp')
+/*angular.module('justVapeApp')
   .service('CordovaReady', function () {
     // AngularJS will instantiate a singleton by calling "new" on this function
 });*/
 
-angular.module('fadboardAppApp').factory('CordovaReady', ['$q', function($q) {
+angular.module('justVapeApp').factory('CordovaReady', ['$q', function($q) {
 	console.log('listening for ready');
 	return function(scope) {
 		var deferred = $q.defer(); 

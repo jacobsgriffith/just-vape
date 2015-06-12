@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('fadboardAppApp').controller('LoginModalCtrl', function ($scope, UsersApi) {
+angular.module('justVapeApp').controller('LoginModalCtrl', function ($scope, UsersApi) {
 	this.cancel = $scope.$dismiss;
-	this.submit = function (email, password) {
-		UsersApi.login(email, password).then(function (user) {
+	this.submit = function (userName, password) {
+		UsersApi.login(userName, password).then(function (user) {
 			$scope.$close(user);
 		});
 	};

@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name fadboardAppApp.controller:MainCtrl
+ * @name justVapeApp.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the fadboardAppApp
+ * Controller of the justVapeApp
  */
-angular.module('fadboardAppApp').controller('MainCtrl', ['$scope', '$state', function ($scope, $state) {
+angular.module('justVapeApp').controller('MainCtrl', ['$scope', '$state', function ($scope, $state) {
     if ($scope.currentUser) {
 		if (!navigator || !navigator.notification) {
 			$state.go('root.dashboard');

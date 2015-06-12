@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('fadboardAppApp').directive('breadcrumbs', ['$log', '$parse', '$interpolate', function ($log, $parse) {
+angular.module('justVapeApp').directive('breadcrumbs', ['$log', '$parse', '$interpolate', function ($log, $parse) {
 	return {
 		restrict: 'EA',
 		replace: false,

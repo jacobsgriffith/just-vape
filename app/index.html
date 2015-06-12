@@ -15,14 +15,14 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body id="fadboardAppApp">
+  <body id="justVapeApp">
 	<a id="hack" class="text-primary" style="position: absolute; top: 0; left: 0; font-size: 30px;" href="#" onclick="var e = document.createEvent('Events'); e.initEvent('deviceready', true, false); document.dispatchEvent(e); return false;">Start Device</a>
 	<script type="text/javascript">
 		document.addEventListener("deviceready", function() {
 			setTimeout(function() {
 				document.body.removeChild(document.getElementById('hack'));
-				var domElement = document.getElementById('fadboardAppApp');
-				angular.bootstrap(domElement, ["fadboardAppApp"]);
+				var domElement = document.getElementById('justVapeApp');
+				angular.bootstrap(domElement, ["justVapeApp"]);
 			}, 500);
 		}, false);
 	</script>
@@ -55,6 +55,9 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/momentjs/moment.js"></script>
+    <script src="bower_components/humanize-duration/humanize-duration.js"></script>
+    <script src="bower_components/angular-timer/dist/angular-timer.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 	<!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -67,7 +70,7 @@
 	<script src="scripts/controllers/login.js"></script>
 	<script src="scripts/controllers/header.js"></script>
 	<script src="scripts/directives/breadcrumbs.js"></script>
-	<script src="scripts/controllers/notifications.js"></script>
+	<script src="scripts/controllers/juicequeue.js"></script>
 	<!-- endbuild -->
 </body>
 </html>

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('fadboardAppApp').service('loginModal', function ($modal, $rootScope) {
+angular.module('justVapeApp').service('loginModal', function ($modal, $rootScope) {
 	function assignCurrentUser (user) {
 		$rootScope.currentUser = user;
 		return user;

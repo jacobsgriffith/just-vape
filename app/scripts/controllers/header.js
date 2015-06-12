@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('fadboardAppApp').controller('HeaderCtrl', ['$scope', '$http', function ($scope, $http) {
+angular.module('justVapeApp').controller('HeaderCtrl', ['$scope', '$http', function ($scope, $http) {
 	$scope.title = 'Dashboard';
 	$scope.previousState = 'home';
 	$scope.goBack = function() {

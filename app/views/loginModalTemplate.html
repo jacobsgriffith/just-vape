@@ -2,13 +2,13 @@
 	<h3 class="modal-title">Login</h3>
 </div>
 <div class="modal-body">
-	<form ng-submit="LoginModalCtrl.submit(_email, _password);">
-		<input ng-init="_email = 'Admin'" type="text" ng-model="_email" placeholder="User Name" />
-		<input ng-init="_password = 'Seck'" type="password" ng-model="_password" placeholder="Password" />
+	<form ng-submit="LoginModalCtrl.submit(_userName, _password);">
+		<input ng-init="_userName = 'jacobsgriffith'" type="text" ng-model="_userName" placeholder="User Name" />
+		<input ng-init="_password = 'Beta343#'" type="password" ng-model="_password" placeholder="Password" />
 		<input type="submit" style="visibility: hidden;" />
 	</form>
 </div>
 <div class="modal-footer">
-	<button class="btn btn-primary" ng-click="LoginModalCtrl.submit(_email, _password)">OK</button>
+	<button class="btn btn-primary" ng-click="LoginModalCtrl.submit(_userName, _password)">OK</button>
 	<button class="btn btn-warning" ng-click="LoginModalCtrl.cancel()">Cancel</button>
 </div>
