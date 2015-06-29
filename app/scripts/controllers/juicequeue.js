@@ -1,10 +1,11 @@
 'use strict';
 
-angular.module('justVapeApp').controller('JuiceQueueCtrl', ['$scope', '$http', function ($scope, $http) {
+angular.module('justVapeApp').controller('JuiceQueueCtrl', ['$scope', '$http', 'Restangular', '$rootScope', function ($scope, $http, Restangular, $rootScope) {
 	$scope.usersJuices = [];
-	$http.get('http://localhost:3370/juice/queue').success(function(data) {
+	var juiceQueueRest = Restangular.all('juice/queue');
+	juiceQueueRest.getList({userId: $rootScope.currentUser.Id}).then(function(juiceQueue) {
 		$scope.usersJuices = [];
-		angular.forEach(data, function (value, key) {
+		angular.forEach(juiceQueue, function (value, key) {
 			var t = value;
 			t.EndTimeMilliseconds = new Date(t.EstimatedDeliveryDate).valueOf();
 			this.push(t);

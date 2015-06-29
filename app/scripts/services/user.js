@@ -4,19 +4,20 @@
     // AngularJS will instantiate a singleton by calling "new" on this function
 });*/
 
-angular.module('justVapeApp').factory("UsersApi", ['$q', '$http', function($q, $http) {
+angular.module('justVapeApp').factory("UsersApi", ['$q', '$http', 'Restangular', function($q, $http, Restangular) {
 	function _login(userName, password) {
 		var deferred = $q.defer();
-		$http.post('http://localhost:3370/user/login', {
+		var userRest = Restangular.all('user/login');
+		userRest.post({
 			userName: userName,
 			password: password
-		}).success(function(data, status, headers, config) {
-			if (data) {
-				deferred.resolve(data);
+		}).then(function(user) {
+			if (user) {
+				deferred.resolve(user);
 			} else {
 				deferred.reject();
 			}
-		}).error(function(data, status, headers, config) {
+		}, function() {
 			deferred.reject();
 		});
 		return deferred.promise;

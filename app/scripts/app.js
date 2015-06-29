@@ -17,8 +17,9 @@ angular
 		'ui.router',
 		'ngSanitize',
 		'ngTouch',
-		'timer'
-	]).config(function ($compileProvider, $stateProvider, $httpProvider, $urlRouterProvider) {
+		'timer',
+		'restangular'
+	]).config(function ($compileProvider, $stateProvider, $httpProvider, $urlRouterProvider, RestangularProvider) {
 		$stateProvider
 		.state('root', {
 			url: '',
@@ -74,13 +75,12 @@ angular
 			   }
 			}
 		});
-		$urlRouterProvider.otherwise('/main');
-	
-		$compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|ghttps?|ms-appx|x-wmapp0):/);
+		RestangularProvider.setBaseUrl('http://localhost:3370');
 		
+		$urlRouterProvider.otherwise('/main');
+		$compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|ghttps?|ms-appx|x-wmapp0):/);
 		$httpProvider.interceptors.push(function ($timeout, $q, $injector) {
 		var loginModal, $http, $state;
-
 		// this trick must be done so that we don't receive
 		// `Uncaught Error: [$injector:cdep] Circular dependency found`
 		$timeout(function () {
