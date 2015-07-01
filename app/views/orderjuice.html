@@ -1,0 +1,63 @@
+<div class="container-fluid" style="color: rgb(220, 220, 220);">
+	<div class="row text-center" style="font-size: 32px;">
+		<div class="span4">{{juice.Description}}</div>
+	</div>
+	<div class="row text-center">
+		<div class="span12" ng-show="$root.currentUser.ProfileId">
+			<span>Press purchase below and come into Just Vape, we will have your juice ready for you.</span>
+		</div>
+		<div class="span12">
+			<a href="#" onclick="return false;" class="btn btn-success" ng-click="purchase()">Purchase</a>
+		</div>
+	</div>
+	<div class="row text-center">
+		<div class="span12" ng-show="!$root.currentUser.ProfileId">
+			<span>{{cardMessage}}</span>
+		</div>
+		<div class="span12">
+			<a href="#" onclick="return false;" class="btn btn-success" ng-click="addCard()">Add card</a>
+		</div>
+	</div>
+	<div class="row jumbotron" ng-show="showAddCard" style="margin-top: 20px; color: black">
+		<form id="paymentForm">
+			<div class="span12">
+				<label>Card Type</label>
+			</div>
+			<div class="span12">
+				<select ng-model="cardType" ng-options="type for type in ['Visa', 'American Express', 'MasterCard']"></select>
+				<p ng-show="paymentForm.cardNumber.$error.ccNumberType">That's not a valid {{cardType}}</p>
+			</div>
+			<div class="span12">
+				<label for="cardNumber">Card Number</label>
+			</div>
+			<div class="span4">
+				<input type="text" ng-model="cardNumber" name="cardNumber" cc-number cc-type="cardType" />
+				<p ng-show="paymentForm.cardNumber.$error.ccNumber">That's not a valid card number</p>
+			</div>
+			<div class="span12">
+				<label for="cardExpMonth">Card Expiration Month</label>
+			</div>
+			<div class="span4">		
+				<input id="cardExpMonth" cc-exp-month ng-model="cardExpMonth" />
+				<p ng-show="paymentForm.cardNumber.$error.ccExpMonth">That's not a valid month</p>
+			</div>
+			<div class="span12">
+				<label for="cardExpYear">Card Expiration Year</label>
+			</div>
+			<div class="span4">
+				<input id="cardExpYear" cc-exp-year ng-model="cardExpYear" />
+				<p ng-show="paymentForm.cardNumber.$error.ccExpYear">That's not a valid year</p>
+			</div>
+			<div class="span12">
+				<label for="cardCode">Card CVC</label>
+			</div>
+			<div class="span4">
+				<input id="cardCode" type="text" ng-model="cardCode" cc-type="cardNumber.$ccType" />
+				<p ng-show="paymentForm.cardNumber.$error.ccCvc">That's not a valid cvc</p>
+			</div>
+			<div class="span12" style="margin-top: 20px;">
+				<a href="#" onclick="return false;" class="btn btn-danger" ng-click="addCardSubmit()">Submit</a>
+			</div>
+		</div>
+	</div>
+</div>

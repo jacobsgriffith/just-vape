@@ -1,21 +1,29 @@
 <div class="container-fluid">
 	<div class="row text-center">
 		<div class="panel-group">
-			<div class="panel panel-default" ng-repeat="usersJuice in usersJuices">
-			  <div class="panel-heading" ng-click="usersJuice.expanded = !usersJuice.expanded">
+			<div class="panel panel-default" ng-repeat="juiceQueue in juiceQueues">
+			  <div class="panel-heading" style="height: 90px;" ng-click="juiceQueue.expanded = !juiceQueue.expanded">
 				<div class="panel-title">
-				  <div class="accordion-toggle">
-					<h2><span class="ng-binding">{{usersJuice.Juice.Name}}</span><i class="pull-right glyphicon glyphicon-chevron-right" ng-class="{'glyphicon-chevron-down': usersJuice.expanded, 'glyphicon-chevron-right': !usersJuice.expanded}" style="margin-right: 20px;"></i></h2>
+					<div class="accordion-toggle">
+						<h2>
+							<div style="margin-left: 50px;">
+								<span>{{juiceQueue.UsersJuice.Juice.Name}} - </span>
+								<span style="font-size: 20px; color: blue;">{{juiceQueue.UsersJuice.User.FirstName}} {{juiceQueue.UsersJuice.User.LastName}}</span>
+							</div>
+							<i class="pull-right glyphicon glyphicon-chevron-right" ng-class="{'glyphicon-chevron-down': juiceQueue.expanded, 'glyphicon-chevron-right': !juiceQueue.expanded}" style="margin-right: 20px; margin-top: -30px;"></i>
+						</h2>
 					</div>
 				</div>
 			  </div>
-			  <div class="panel-collapse collapse" ng-class="{ in: usersJuice.expanded }">
+			  <div class="panel-collapse collapse" ng-class="{ in: juiceQueue.expanded }">
 				  <div class="panel-body">			
 						<div class="col-sm-12 ng-scope">
-							<h3 class="text-center ng-binding text-danger" ng-class="{ 'text-danger': !usersJuice.Done, 'text-success': usersJuice.done}">{{usersJuice.Done ? 'Ready' : 'Mixing'}}</h3>
+							<h3 class="text-center text-danger" ng-class="{ 'text-danger': !juiceQueue.Done, 'text-success': juiceQueue.Done}">{{juiceQueue.Done ? 'Done Mixing' : juiceQueue.Mixing ? 'Mixing in progress' : 'Ready to mix'}}</h3>
+							<a href="#" onclick="return false" ng-show="juiceQueue.Done == false && juiceQueue.Mixing == false" ng-click="startMixing(juiceQueue)" class="btn btn-danger">Start Mixing</a>
+							<a href="#" onclick="return false" ng-show="juiceQueue.Done == false && juiceQueue.Mixing == true" ng-click="doneMixing(juiceQueue)" class="btn btn-danger">Done Mixing</a>
 						</div>
 						<div class="col-sm-12 ng-scope">
-							<label class="text-center ng-binding">{{usersJuice.Description}}</label>
+							<label class="text-center">{{juiceQueue.UsersJuice.Juice.Description}}</label>
 						</div>
 					</div>
 			  </div>

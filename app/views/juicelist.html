@@ -1,0 +1,30 @@
+<div class="container-fluid">
+	<div class="row text-center">
+		<div class="panel-group">
+			<div class="panel panel-default" ng-repeat="juice in juices">
+			  <div class="panel-heading" style="height: 90px;" ng-click="juice.expanded = !juice.expanded">
+				<div class="panel-title">
+					<div class="accordion-toggle">
+						<h2>
+							<div style="margin-left: 50px;">
+								<span>{{juice.Name}}</span>
+							</div>
+							<i class="pull-right glyphicon glyphicon-chevron-right" ng-class="{'glyphicon-chevron-down': juice.expanded, 'glyphicon-chevron-right': !juice.expanded}" style="margin-right: 20px; margin-top: -30px;"></i>
+						</h2>
+					</div>
+				</div>
+			  </div>
+			  <div class="panel-collapse collapse" ng-class="{ in: juice.expanded }">
+				  <div class="panel-body">			
+						<div class="col-sm-12 ng-scope">
+							<a href="#" onclick="return false" ng-click="orderJuice(juice)" class="btn btn-danger">Order</a>
+						</div>
+						<div class="col-sm-12 ng-scope">
+							<label class="text-center">{{juice.Description}}</label>
+						</div>
+					</div>
+			  </div>
+			</div>
+		</div>
+	</div>
+</div>

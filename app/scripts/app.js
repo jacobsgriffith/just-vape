@@ -18,7 +18,8 @@ angular
 		'ngSanitize',
 		'ngTouch',
 		'timer',
-		'restangular'
+		'restangular',
+		'credit-cards'
 	]).config(function ($compileProvider, $stateProvider, $httpProvider, $urlRouterProvider, RestangularProvider) {
 		$stateProvider
 		.state('root', {
@@ -64,6 +65,28 @@ angular
 			   }
 			}
 		})
+		.state('root.juicelist', {
+			url: "/juicelist",
+			templateUrl: "views/juicelist.html",
+			controller: 'JuiceListCtrl',
+			data: {
+				requireLogin: true,
+				settings: {
+				   displayName: 'Juice List'
+			   }
+			}
+		})
+		.state('root.orderjuice', {
+			url: "/orderjuice?juiceId",
+			templateUrl: "views/orderjuice.html",
+			controller: 'OrderJuiceCtrl',
+			data: {
+				requireLogin: true,
+				settings: {
+				   displayName: 'Order Juice'
+			   }
+			}
+		})
 		.state('root.main', {
 			url: "/main",
 			templateUrl: "views/main.html",
@@ -76,7 +99,9 @@ angular
 			}
 		});
 		RestangularProvider.setBaseUrl('http://localhost:3370');
-		
+		RestangularProvider.setRestangularFields({
+			id: "Id"
+		});		
 		$urlRouterProvider.otherwise('/main');
 		$compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|ghttps?|ms-appx|x-wmapp0):/);
 		$httpProvider.interceptors.push(function ($timeout, $q, $injector) {
