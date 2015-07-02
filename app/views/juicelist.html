@@ -1,29 +1,75 @@
 <div class="container-fluid">
-	<div class="row text-center">
-		<div class="panel-group">
-			<div class="panel panel-default" ng-repeat="juice in juices">
-			  <div class="panel-heading" style="height: 90px;" ng-click="juice.expanded = !juice.expanded">
-				<div class="panel-title">
-					<div class="accordion-toggle">
-						<h2>
-							<div style="margin-left: 50px;">
-								<span>{{juice.Name}}</span>
-							</div>
-							<i class="pull-right glyphicon glyphicon-chevron-right" ng-class="{'glyphicon-chevron-down': juice.expanded, 'glyphicon-chevron-right': !juice.expanded}" style="margin-right: 20px; margin-top: -30px;"></i>
-						</h2>
+	<div ng-show="!selectedCategory">
+		<div class="row text-center">
+			<div class="panel-group">
+				<div class="panel panel-default" ng-click="selectedCategory = 'All'" style="cursor: pointer;">
+				  <div class="panel-heading" style="height: 90px;">
+					<div class="panel-title">
+						<div class="accordion-toggle">
+							<h2>
+								<div style="margin-left: 50px;">
+									<span>All</span>
+								</div>
+							</h2>
+						</div>
 					</div>
+				  </div>
 				</div>
-			  </div>
-			  <div class="panel-collapse collapse" ng-class="{ in: juice.expanded }">
-				  <div class="panel-body">			
-						<div class="col-sm-12 ng-scope">
-							<a href="#" onclick="return false" ng-click="orderJuice(juice)" class="btn btn-danger">Order</a>
-						</div>
-						<div class="col-sm-12 ng-scope">
-							<label class="text-center">{{juice.Description}}</label>
+				<div class="panel panel-default" ng-repeat="category in categories" ng-click="$parent.selectedCategory = '{{category.Name}}'" style="cursor: pointer;">
+				  <div class="panel-heading" style="height: 90px;">
+					<div class="panel-title">
+						<div class="accordion-toggle">
+							<h2>
+								<div style="margin-left: 50px;">
+									<span>{{category.Name}}</span>
+								</div>
+							</h2>
 						</div>
 					</div>
-			  </div>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div ng-show="selectedCategory">
+		<div class="row text-center" style="margin-bottom: 10px">
+			<div class="col-md-1">
+				<span style="color: white; font-size: 20px;">Search</span>
+			</div>
+			<div class="col-md-2">
+				<input ng-model="searchText" placeholder="Search..." style="height: 34px; padding: 0px 20px; width: 100%;"></input>
+			</div>
+			<div class="col-md-6" style="text-align">
+				<a href="#" onclick="return false;" class="btn btn-primary" ng-click="selectedCategory = null">Choose a new category</a>
+			</div>
+		</div>
+		<div class="row text-center">
+			<div class="panel-group">
+				<div class="panel panel-default" ng-repeat="juice in juices | juiceFilter:selectedCategory:searchText" ng-click="juice.expanded = !juice.expanded" style="cursor: pointer;">
+				  <div class="panel-heading" style="height: 90px;">
+					<div class="panel-title">
+						<div class="accordion-toggle">
+							<h2>
+								<span class="pull-left" style="margin-left: 20px; margin-top: -30px;">{{juice.Category.Name}}</span>
+								<div style="margin-left: 50px;">
+									<span>{{juice.Name}}</span>
+								</div>
+								<i class="pull-right glyphicon glyphicon-chevron-right" ng-class="{'glyphicon-chevron-down': juice.expanded, 'glyphicon-chevron-right': !juice.expanded}" style="margin-right: 20px; margin-top: -30px;"></i>
+							</h2>
+						</div>
+					</div>
+				  </div>
+				  <div class="panel-collapse collapse" ng-class="{ in: juice.expanded }">
+					  <div class="panel-body">			
+							<div class="col-sm-12 ng-scope">
+								<a href="#" onclick="return false" ng-click="orderJuice(juice)" class="btn btn-danger">Order</a>
+							</div>
+							<div class="col-sm-12 ng-scope">
+								<label class="text-center">{{juice.Description}}</label>
+							</div>
+						</div>
+				  </div>
+				</div>
 			</div>
 		</div>
 	</div>

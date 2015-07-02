@@ -16,9 +16,17 @@ angular.module('justVapeApp').controller('OrderJuiceCtrl', ['$scope', '$rootScop
 	$scope.cardExpYear;
 	$scope.cardCode;
 	$scope.cardType;
+	$scope.selectedBottle;
+	$scope.bottles = [];
+	
 	var juiceRest = Restangular.one('juice', $stateParams.juiceId);
 	juiceRest.get().then(function(juice) {
 		$scope.juice = juice;
+	});
+	
+	var bottlesRest = Restangular.all('juice/bottles');
+	bottlesRest.getList().then(function(bottles) {
+		$scope.bottles = bottles
 	});
 	
 	$scope.addCard = function() {
@@ -40,9 +48,10 @@ angular.module('justVapeApp').controller('OrderJuiceCtrl', ['$scope', '$rootScop
 	
 	$scope.purchase = function() {
 		if ($rootScope.currentUser.ProfileId) {
-			Restangular.one('user/purchasejuice').post({
+			Restangular.one('user').post('purchasejuice', {
 				userId: $rootScope.currentUser.Id,
-				juiceId: $scope.juice.Id
+				juiceId: $scope.juice.Id,
+				bottleId: $scope.selectedBottle
 			}).then(function(msg) {
 				if (msg == 'card expired') {
 					$rootScope.currentUser.ProfileId = null;
