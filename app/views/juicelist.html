@@ -33,6 +33,9 @@
 	</div>
 	<div ng-show="selectedCategory">
 		<div class="row text-center" style="margin-bottom: 10px">
+			<span>{{selectedCategory}}</span>
+		</div>
+		<div class="row text-center" style="margin-bottom: 10px">
 			<div class="col-md-1">
 				<span style="color: white; font-size: 20px;">Search</span>
 			</div>
@@ -40,7 +43,7 @@
 				<input ng-model="searchText" placeholder="Search..." style="height: 34px; padding: 0px 20px; width: 100%;"></input>
 			</div>
 			<div class="col-md-6" style="text-align">
-				<a href="#" onclick="return false;" class="btn btn-primary" ng-click="selectedCategory = null">Choose a new category</a>
+				<a href="#" onclick="return false;" class="btn btn-primary" ng-click="selectedCategory = null">Select a new category</a>
 			</div>
 		</div>
 		<div class="row text-center">
@@ -50,22 +53,22 @@
 					<div class="panel-title">
 						<div class="accordion-toggle">
 							<h2>
-								<span class="pull-left" style="margin-left: 20px; margin-top: -30px;">{{juice.Category.Name}}</span>
-								<div style="margin-left: 50px;">
-									<span>{{juice.Name}}</span>
-								</div>
-								<i class="pull-right glyphicon glyphicon-chevron-right" ng-class="{'glyphicon-chevron-down': juice.expanded, 'glyphicon-chevron-right': !juice.expanded}" style="margin-right: 20px; margin-top: -30px;"></i>
+								<span>{{juice.Name}}</span>
+								<i class="pull-right glyphicon glyphicon-chevron-right" ng-class="{'glyphicon-chevron-down': juice.expanded, 'glyphicon-chevron-right': !juice.expanded}" style="margin-right: 20px;"></i>
 							</h2>
 						</div>
 					</div>
 				  </div>
 				  <div class="panel-collapse collapse" ng-class="{ in: juice.expanded }">
-					  <div class="panel-body">			
+					  <div class="panel-body">
 							<div class="col-sm-12 ng-scope">
-								<a href="#" onclick="return false" ng-click="orderJuice(juice)" class="btn btn-danger">Order</a>
+								<label class="text-center" style="font-size: 12px; font-weight: bold;">{{juice.Category.Name}}</label>
 							</div>
 							<div class="col-sm-12 ng-scope">
 								<label class="text-center">{{juice.Description}}</label>
+							</div>
+							<div class="col-sm-12 ng-scope">
+								<a href="#" onclick="return false" ng-click="orderJuice(juice)" class="btn btn-danger pull-right">Order</a>
 							</div>
 						</div>
 				  </div>

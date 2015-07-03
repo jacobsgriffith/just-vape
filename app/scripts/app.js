@@ -43,6 +43,17 @@ angular
 			   }
 			}
 		})
+		.state('root.register', {
+			url: "/register",
+			templateUrl: "views/register.html",
+			controller: 'RegisterCtrl',
+			data: {
+				requireLogin: false,
+				settings: {
+				   displayName: 'Register'
+			   }
+			}
+		})
 		.state('root.dashboard', {
 			url: "/dashboard",
 			templateUrl: "views/dashboard.html",
@@ -62,6 +73,17 @@ angular
 				requireLogin: true,
 				settings: {
 				   displayName: 'Juice Queue'
+			   }
+			}
+		})
+		.state('root.managejuice', {
+			url: "/managejuice",
+			templateUrl: "views/managejuice.html",
+			controller: 'ManageJuiceCtrl',
+			data: {
+				requireLogin: true,
+				settings: {
+				   displayName: 'Manage Juice'
 			   }
 			}
 		})
@@ -98,7 +120,9 @@ angular
 			   }
 			}
 		});
+		
 		RestangularProvider.setBaseUrl('http://localhost:3370');
+		//RestangularProvider.setBaseUrl('http://justvape.azurewebsites.net');
 		RestangularProvider.setRestangularFields({
 			id: "Id"
 		});		
@@ -147,7 +171,7 @@ angular
 					loginModal().then(function () {
 						return $state.go(toState.name, toParams);
 					}).catch(function () {
-						return $state.go('root.dashboard');
+						//return $state.go('root.dashboard');
 					});
 				}
 			}

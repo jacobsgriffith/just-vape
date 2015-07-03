@@ -1,9 +1,14 @@
 <div class="container-fluid" style="color: rgb(220, 220, 220);">
-	<div class="row text-center" style="font-size: 32px;">
+	<div class="row text-center panel panel-default" style="font-size: 32px; color: blue;">
 		<div class="span4">{{juice.Name}}</div>
 	</div>
-	<div class="row text-center" style="font-size: 32px;">
+	<div class="row text-center" style="font-size: 20px;">
 		<div class="span4">{{juice.Description}}</div>
+	</div>
+	<div class="row text-center">
+		<div class="center-block">
+			<span>Choose bottle size</span>
+		</div>
 	</div>
 	<div class="row text-center">
 		<div class="center-block" style="width: 200px;">
@@ -12,8 +17,7 @@
 			</select>
 		</div>
 	</div>
-	<!--todo delete exclamation mark before go live-->
-	<div class="row text-center" ng-show="!$root.currentUser.ProfileId && selectedBottle">
+	<div class="row text-center" ng-show="$root.currentUser.ProfileId && selectedBottle">
 			<div class="span12">
 			<span>Press purchase below and come into Just Vape, we will have your juice ready for you.</span>
 		</div>
@@ -27,6 +31,11 @@
 		</div>
 		<div class="span12">
 			<a href="#" onclick="return false;" class="btn btn-success" ng-click="addCard()">Add card</a>
+		</div>
+	</div>
+	<div class="row text-center" ng-show="juiceOrdered">
+		<div class="span12">
+			<span>Thank you for your purchase! Your juice will be ready for pickup within 15 minutes</span>
 		</div>
 	</div>
 	<div class="row jumbotron" ng-show="showAddCard" style="margin-top: 20px; color: black">

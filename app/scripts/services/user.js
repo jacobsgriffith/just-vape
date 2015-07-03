@@ -5,11 +5,11 @@
 });*/
 
 angular.module('justVapeApp').factory("UsersApi", ['$q', '$http', 'Restangular', function($q, $http, Restangular) {
-	function _login(userName, password) {
+	function _login(email, password) {
 		var deferred = $q.defer();
 		var userRest = Restangular.all('user/login');
 		userRest.post({
-			userName: userName,
+			email: email,
 			password: password
 		}).then(function(user) {
 			if (user) {
