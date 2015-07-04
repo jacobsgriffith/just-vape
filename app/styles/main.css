@@ -85,3 +85,50 @@ body {
 .text-primary {
 	color: #E6E6FA;
 }
+
+.dashboard-click.ng-click-remove {
+	transition:0.25s linear all;
+	opacity: .5;
+	transform: scale(.95);
+}
+.dashboard-click.ng-click-remove.ng-click-remove-active { 
+	opacity: 1;
+	transform: scale(1);
+}
+
+.menufade.ng-enter {
+  transition:.5s linear all;
+  left: -1000px;
+}
+.menufade.ng-enter.ng-enter-active {
+  left: 0px;
+}
+
+.menufade.ng-leave {
+  transition:.5s linear all;
+  left: 0px;
+}
+.menufade.ng-leave.ng-leave-active {
+  left: -1000px;
+}
+
+.juiceexpand {
+	display: block;
+}
+
+.juiceexpand.ng-enter {
+  transition:.5s linear all;
+  opacity: 0;
+}
+.juiceexpand.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+
+.juiceexpand.ng-leave {
+  transition:.5s linear all;
+  opacity: 1;
+  display: block;
+}
+.juiceexpand.ng-leave.ng-leave-active {
+  opacity: 0;
+}

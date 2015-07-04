@@ -1,0 +1,52 @@
+<div class="container-fluid">
+	<div class="row text-center">
+		<div class="panel-group">
+			<div class="panel panel-default" ng-repeat="usersJuice in usersJuices">
+				<div class="panel-heading" style="height: 90px;" ng-click="usersJuice.expanded = !usersJuice.expanded">
+					<div class="panel-title">
+						<div class="accordion-toggle">
+							<h2>
+								<div style="margin-left: 50px;">
+									<span>{{usersJuice.Juice.Name}} - </span>
+									<span style="font-size: 20px; color: blue;">{{usersJuice.Bottle.Name}}</span>
+								</div>
+								<i class="pull-right glyphicon glyphicon-chevron-right" ng-class="{'glyphicon-chevron-down': usersJuice.expanded, 'glyphicon-chevron-right': !usersJuice.expanded}" style="margin-right: 20px; margin-top: -30px;"></i>
+								<i class="pull-right glyphicon" ng-class="{'glyphicon-check': usersJuice.Done, 'glyphicon-tasks': !usersJuice.Done}" style="margin-right: 70px; margin-top: -30px;"></i>
+							</h2>
+						</div>
+					</div>
+				</div>
+				<div class="panel-collapse juiceexpand" ng-if="usersJuice.expanded">
+					<div class="panel-body">
+						<div class="col-sm-12">
+							<h3 class="text-center text-danger" ng-class="{ 'text-danger': !usersJuice.Done, 'text-success': usersJuice.Done}">{{usersJuice.Done ? 'Done' : usersJuice.Mixing ? 'Mixing in progress' : 'Order received'}}</h3>
+						</div>
+						<div class="col-sm-12">
+							<label class="text-center">{{usersJuice.Juice.Description}}</label>
+						</div>
+						<div class="col-sm-12">
+							<a href="#" onclick="return false;" class="btn btn-success pull-right" ng-show="!usersJuice.rateAndComment && usersJuice.Done" ng-click="usersJuice.rateAndComment = !usersJuice.rateAndComment">Rate and comment</a>
+						</div>
+						<div class="row text-center" ng-show="usersJuice.rateAndComment">
+							<div class="col-sm-12">
+								<rating ng-model="usersJuice.Rating" max="5" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
+							</div>
+							<div class="col-sm-12">
+								<textarea rows="2" style="width: 200px; margin-left: 80px;" placeholder="Enter notes here" ng-model="usersJuice.Comment"></textarea>	
+								<a href="#" onclick="return false;" class="btn btn-success pull-right" ng-click="saveRatingAndComment(usersJuice)">Save</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default" ng-if="usersJuices.length == 0" style="font-size: 20px; padding: 20px;">
+				<div class="row">
+					<span>You haven't ordered any juices yet!</span>
+				</div>
+				<div class="row">
+					<span>Check out our </span><a ui-sref="root.juicelist">Juice Selection</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div> 

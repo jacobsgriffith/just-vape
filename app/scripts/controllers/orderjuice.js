@@ -11,7 +11,6 @@ angular.module('justVapeApp').controller('OrderJuiceCtrl', ['$scope', '$rootScop
 	$scope.cardMessage = 'Add your card to be able to purchase juice through our app. Once purchased, come into Just Vape and we will have your juice ready for you!';
 	$scope.juice = [];
 	$scope.showAddCard = false;
-	$scope.juiceOrdered = false;
 	$scope.cardNumber;
 	$scope.cardExpMonth;
 	$scope.cardExpYear;
@@ -58,7 +57,7 @@ angular.module('justVapeApp').controller('OrderJuiceCtrl', ['$scope', '$rootScop
 					$rootScope.currentUser.ProfileId = null;
 					$scope.cardMessage = 'Your card has expired, please add an updated card and then press Purchse again';
 				} else if (msg == 'Success') {
-					$scope.juiceOrdered = true;
+					$state.go('root.usersjuices');
 				}
 			});
 		}

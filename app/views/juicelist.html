@@ -2,7 +2,7 @@
 	<div ng-show="!selectedCategory">
 		<div class="row text-center">
 			<div class="panel-group">
-				<div class="panel panel-default" ng-click="selectedCategory = 'All'" style="cursor: pointer;">
+				<div class="panel panel-default menufade" ng-if="allCategorySlideIn" ng-click="$parent.selectCategory('All')" style="cursor: pointer; position: relative;">
 				  <div class="panel-heading" style="height: 90px;">
 					<div class="panel-title">
 						<div class="accordion-toggle">
@@ -15,7 +15,7 @@
 					</div>
 				  </div>
 				</div>
-				<div class="panel panel-default" ng-repeat="category in categories" ng-click="$parent.selectedCategory = '{{category.Name}}'" style="cursor: pointer;">
+				<div class="panel panel-default menufade" ng-if="category.slideIn" ng-repeat="category in categories" ng-click="$parent.selectCategory(category)" style="cursor: pointer; position: relative;">
 				  <div class="panel-heading" style="height: 90px;">
 					<div class="panel-title">
 						<div class="accordion-toggle">
@@ -43,12 +43,12 @@
 				<input ng-model="searchText" placeholder="Search..." style="height: 34px; padding: 0px 20px; width: 100%;"></input>
 			</div>
 			<div class="col-md-6" style="text-align">
-				<a href="#" onclick="return false;" class="btn btn-primary" ng-click="selectedCategory = null">Select a new category</a>
+				<a href="#" onclick="return false;" class="btn btn-primary" ng-click="unselectCategory()">Select a new category</a>
 			</div>
 		</div>
 		<div class="row text-center">
 			<div class="panel-group">
-				<div class="panel panel-default" ng-repeat="juice in juices | juiceFilter:selectedCategory:searchText" ng-click="juice.expanded = !juice.expanded" style="cursor: pointer;">
+				<div class="panel panel-default" ng-repeat="juice in juices | juiceFilter: selectedCategory:searchText" ng-click="juice.expanded = !juice.expanded" style="cursor: pointer;">
 				  <div class="panel-heading" style="height: 90px;">
 					<div class="panel-title">
 						<div class="accordion-toggle">
@@ -59,7 +59,7 @@
 						</div>
 					</div>
 				  </div>
-				  <div class="panel-collapse collapse" ng-class="{ in: juice.expanded }">
+				  <div class="panel-collapse juiceexpand" ng-if="juice.expanded">
 					  <div class="panel-body">
 							<div class="col-sm-12 ng-scope">
 								<label class="text-center" style="font-size: 12px; font-weight: bold;">{{juice.Category.Name}}</label>

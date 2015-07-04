@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" style="background-color: rgb(33, 34, 34);">
+<html class="no-js" style="background-color: rgb(15, 12, 29);">
   <head>
     <meta charset="utf-8">
     <title></title>
@@ -30,9 +30,9 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <!-- Add your site or application content here -->
-	<div ui-view="header" style="background-color: rgb(33, 34, 34);"></div>
-	<div class="container-fluid" style="background-color: rgb(33, 34, 34);" ui-view="container"></div>
-	<div ui-view="footer" style="background-color: rgb(33, 34, 34);"></div>
+	<div ui-view="header" style="background-color: rgb(15, 12, 29);"></div>
+	<div class="container-fluid" style="background-color: rgb(15, 12, 29);" ui-view="container"></div>
+	<div ui-view="footer" style="background-color: rgb(15, 12, 29);"></div>
 	<script>
        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
        (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
@@ -61,6 +61,7 @@
     <script src="bower_components/lodash/lodash.js"></script>
     <script src="bower_components/restangular/dist/restangular.js"></script>
     <script src="bower_components/angular-credit-cards/release/angular-credit-cards.js"></script>
+    <script src="bower_components/angular-spinners/dist/angular-spinners.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 	<!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -75,9 +76,11 @@
 	<script src="scripts/controllers/header.js"></script>
 	<script src="scripts/directives/breadcrumbs.js"></script>
 	<script src="scripts/controllers/juicequeue.js"></script>
+	<script src="scripts/controllers/usersjuices.js"></script>
 	<script src="scripts/controllers/juicelist.js"></script>
 	<script src="scripts/controllers/orderjuice.js"></script>
 	<script src="scripts/controllers/managejuice.js"></script>
+	<script src="scripts/controllers/aboutus.js"></script>
 	<!-- endbuild -->
 </body>
 </html>

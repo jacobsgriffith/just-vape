@@ -1,47 +1,51 @@
 <div ng-show="!currentUser">
-	<div class="row jumbotron" style="margin-top: 20px; color: black">
-		<form novalidate id="registrationForm" name="registrationForm">
-			<div class="span12">
-				<label for="firstName">First Name</label>
-			</div>
-			<div class="span12">
-				<input type="text" placeholder="John" id="firstName" name="firstName" ng-model="firstName" ng-required="true" />
-			</div>
-			<div class="span12">
-				<!--<span ng-show="registrationForm.firstName.$dirty && registrationForm.firstName.$error">That is not a valid first name</span>-->
-			</div>
-			<div class="span12">
-				<label for="lastName">Last Name</label>
-			</div>
-			<div class="span12">		
-				<input type="text" placeholder="Smith" id="lastName" name="lastName" ng-model="lastName" ng-required="true" />
-			</div>
-			<div class="span12">
-				<!--<span ng-show="registrationForm.lastName.$dirty && registrationForm.lastName.$error">That's not a valid last name</span>-->
-			</div>
-			<div class="span12">
-				<label for="email">Email</label>
-			</div>
-			<div class="span12">
-				<input placeholder="johnsmith@email.com" type="text" id="email" name="email" ng-model="email" ng-required="true" />
-			</div>
-			<div class="span12">
-				<!--<span ng-show="registrationForm.email.$dirty && registrationForm.email.$error">That's not a valid email</span>-->
-			</div>
-			<div class="span12">
-				<label for="password">Password</label>
-			</div>
-			<div class="span12">
-				<input type="password" ng-model="password" id="password" name="password" ng-required="true" />
-			</div>
-			<div class="span12">
-				<!--<span ng-show="registrationForm.password.$dirty && registrationForm.password.$error">That's not a valid password</span>-->
-			</div>
-			<div class="span12" style="margin-top: 20px;">
-				<a href="#" ng-show="!registrationForm.$valid" style="background-color: grey !important; border-color: grey !important; color: lightgrey !important;" onclick="return false;" class="btn btn-green">Invalid registration</a>
-				<a href="#" ng-show="registrationForm.$valid" onclick="return false;" class="btn btn-danger" ng-click="submitRegistration()">Submit</a>
+	<div class="jumbotron" style="margin-top: 20px; color: black;">
+		<div class="row">
+			<a ui-sref="root.aboutus" class="pull-right" style="font-size: 20px; margin-right: 10px; margin-top: -20px;">About us</a>
+		</div>
+		<div class="row">
+			<form novalidate id="registrationForm" name="registrationForm">
+				<div class="span12">
+					<label for="firstName">First Name</label>
+				</div>
+				<div class="span12">
+					<input type="text" placeholder="John" id="firstName" name="firstName" ng-model="firstName" ng-required="true" />
+				</div>
+				<div class="span12">
+					<!--<span ng-show="registrationForm.firstName.$dirty && registrationForm.firstName.$error">That is not a valid first name</span>-->
+				</div>
+				<div class="span12">
+					<label for="lastName">Last Name</label>
+				</div>
+				<div class="span12">		
+					<input type="text" placeholder="Smith" id="lastName" name="lastName" ng-model="lastName" ng-required="true" />
+				</div>
+				<div class="span12">
+					<!--<span ng-show="registrationForm.lastName.$dirty && registrationForm.lastName.$error">That's not a valid last name</span>-->
+				</div>
+				<div class="span12">
+					<label for="email">Email</label>
+				</div>
+				<div class="span12">
+					<input placeholder="johnsmith@email.com" type="text" id="email" name="email" ng-model="email" ng-required="true" />
+				</div>
+				<div class="span12">
+					<!--<span ng-show="registrationForm.email.$dirty && registrationForm.email.$error">That's not a valid email</span>-->
+				</div>
+				<div class="span12">
+					<label for="password">Password</label>
+				</div>
+				<div class="span12">
+					<input type="password" ng-model="password" id="password" name="password" ng-required="true" />
+				</div>
+				<div class="span12">
+					<!--<span ng-show="registrationForm.password.$dirty && registrationForm.password.$error">That's not a valid password</span>-->
+				</div>
+				<div class="span12" style="margin-top: 20px;">
+					<a href="#" ng-show="!registrationForm.$valid" style="background-color: grey !important; border-color: grey !important; color: lightgrey !important;" onclick="return false;" class="btn btn-green">Invalid registration</a>
+					<a href="#" ng-show="registrationForm.$valid" onclick="return false;" class="btn btn-danger" ng-click="submitRegistration()">Submit</a>
+				</div>
 			</div>
 		</div>
 	</div>
-
 </div>

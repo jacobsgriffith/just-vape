@@ -88,26 +88,12 @@ angular.module('justVapeApp').controller('ManageJuiceCtrl', ['$modal', '$scope',
 			});
 		}
 	}
-}]).filter('juiceFilter', function() {
+}]).filter('manageJuiceFilter', function() {
 	return function(items, selectedCategory, searchText) {
 		var filtered = [];
-		angular.forEach(items, function(item) {
-			if (selectedCategory != 'All') {			
-				if (searchText) {
-					if (selectedCategory == item.Category.Name && item.Name.indexOf(searchText) != -1) {
-						filtered.push(item);
-					}
-				} else {
-					if (selectedCategory == item.Category.Name) {
-						filtered.push(item);
-					}
-				}
-			} else {
-				if (searchText) {
-					if (item.Name.indexOf(searchText) != -1) {
-						filtered.push(item);
-					}
-				} else {
+		angular.forEach(items, function(item) {		
+			if (selectedCategory == 'All' || selectedCategory == item.Category.Name) {
+				if (!searchText || item.Name.toLowerCase().indexOf(searchText.toLowerCase()) != -1) {
 					filtered.push(item);
 				}
 			}

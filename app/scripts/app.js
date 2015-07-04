@@ -19,7 +19,8 @@ angular
 		'ngTouch',
 		'timer',
 		'restangular',
-		'credit-cards'
+		'credit-cards',
+		'angularSpinners'
 	]).config(function ($compileProvider, $stateProvider, $httpProvider, $urlRouterProvider, RestangularProvider) {
 		$stateProvider
 		.state('root', {
@@ -98,6 +99,17 @@ angular
 			   }
 			}
 		})
+		.state('root.usersjuices', {
+			url: '/usersjuices',
+			templateUrl: "views/usersjuices.html",
+			controller: 'UsersJuicesCtrl',
+			data: {
+				requireLogin: true,
+				settings: {
+				   displayName: 'Ordered Juices'
+			   }
+			}
+		})
 		.state('root.orderjuice', {
 			url: "/orderjuice?juiceId",
 			templateUrl: "views/orderjuice.html",
@@ -106,6 +118,17 @@ angular
 				requireLogin: true,
 				settings: {
 				   displayName: 'Order Juice'
+			   }
+			}
+		})
+		.state('root.aboutus', {
+			url: "/aboutus",
+			templateUrl: "views/aboutus.html",
+			controller: 'AboutUsCtrl',
+			data: {
+				requireLogin: false,
+				settings: {
+				   displayName: 'About Us'
 			   }
 			}
 		})
@@ -121,8 +144,8 @@ angular
 			}
 		});
 		
-		RestangularProvider.setBaseUrl('http://localhost:3370');
-		//RestangularProvider.setBaseUrl('http://justvape.azurewebsites.net');
+		//RestangularProvider.setBaseUrl('http://localhost:3370');
+		RestangularProvider.setBaseUrl('http://justvape.azurewebsites.net');
 		RestangularProvider.setRestangularFields({
 			id: "Id"
 		});		
@@ -161,12 +184,12 @@ angular
 	  });
 	}).run(function ($rootScope, $state, loginModal) {
 		$rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
-		if (toState.name == 'root') {
-			event.preventDefault();
-			$state.go('root.main');
-		} else {
-			var requireLogin = toState.data.requireLogin;
-			if (requireLogin && typeof $rootScope.currentUser === 'undefined') {
+			if (toState.name == 'root') {
+				event.preventDefault();
+				$state.go('root.main');
+			} else {
+				var requireLogin = toState.data.requireLogin;
+				if (requireLogin && typeof $rootScope.currentUser === 'undefined') {
 					event.preventDefault();
 					loginModal().then(function () {
 						return $state.go(toState.name, toParams);

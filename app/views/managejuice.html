@@ -44,7 +44,7 @@
 		</div>
 		<div class="row text-center">
 			<div class="panel-group">
-				<div class="panel panel-default" ng-repeat="juice in juices | juiceFilter:selectedCategory.Name:searchText" style="cursor: pointer;">
+				<div class="panel panel-default" ng-repeat="juice in juices | manageJuiceFilter:selectedCategory.Name:searchText" style="cursor: pointer;">
 				  <div class="panel-heading" style="height: 90px;">
 					<div class="panel-title">
 						<div class="accordion-toggle">
