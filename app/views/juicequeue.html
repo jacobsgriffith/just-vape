@@ -6,12 +6,9 @@
 				<div class="panel-title">
 					<div class="accordion-toggle">
 						<h2>
-							<div style="margin-left: 50px;">
-								<span>{{juiceQueue.UsersJuice.Juice.Name}} ({{juiceQueue.UsersJuice.Bottle.Name}}) - </span>
-								<span style="font-size: 20px; color: blue;">{{juiceQueue.UsersJuice.User.FirstName}} {{juiceQueue.UsersJuice.User.LastName}}</span>
-							</div>
-							<i class="pull-right glyphicon glyphicon-chevron-right" ng-class="{'glyphicon-chevron-down': juiceQueue.expanded, 'glyphicon-chevron-right': !juiceQueue.expanded}" style="margin-right: 20px; margin-top: -30px;"></i>
-							<i class="pull-right glyphicon" ng-class="{'glyphicon-check': juiceQueue.Done, 'glyphicon-tasks': !juiceQueue.Done}" style="margin-right: 50px; margin-top: -30px;"></i>
+							<span class="pull-left">{{juiceQueue.UsersJuice.Juice.Name}}</span>
+							<i class="pull-right glyphicon glyphicon-chevron-right" ng-class="{'glyphicon-chevron-down': juiceQueue.expanded, 'glyphicon-chevron-right': !juiceQueue.expanded}" style="margin-right: 20px;"></i>
+							<i class="pull-right glyphicon" ng-class="{'glyphicon-check': juiceQueue.Done, 'glyphicon-tasks': !juiceQueue.Done}" style="margin-right: 20px;"></i>
 						</h2>
 					</div>
 				</div>
@@ -20,6 +17,12 @@
 				  <div class="panel-body">			
 						<div class="col-sm-12 ng-scope">
 							<h3 class="text-center text-danger" ng-class="{ 'text-danger': !juiceQueue.Done, 'text-success': juiceQueue.Done}">{{juiceQueue.Done ? 'Done Mixing' : juiceQueue.Mixing ? 'Mixing in progress' : 'Ready to mix'}}</h3>
+							<div class="col-sm-12">
+								<span style="font-size: 20px; color: blue;">{{juiceQueue.UsersJuice.Bottle.Name}}</span>
+							</div>
+							<div class="col-sm-12">
+								<span style="font-size: 20px; color: blue;">{{juiceQueue.UsersJuice.User.FirstName}} {{juiceQueue.UsersJuice.User.LastName}}</span>
+							</div>
 							<a href="#" onclick="return false" ng-show="juiceQueue.Done == false && juiceQueue.Mixing == false" ng-click="startMixing(juiceQueue)" class="btn btn-danger">Start Mixing</a>
 							<a href="#" onclick="return false" ng-show="juiceQueue.Done == false && juiceQueue.Mixing == true" ng-click="doneMixing(juiceQueue)" class="btn btn-danger">Done Mixing</a>
 						</div>

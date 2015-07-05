@@ -1,39 +1,39 @@
 <div class="container-fluid">
 	<div class="center-block" style="font-size: 32px; color: rgb(220, 220, 220);">
 		<ul class="nav nav-pills nav-stacked">
-			<li heading="Juice List" ng-click="navigateTo('root.juicelist')" ng-if="rootjuicelist" ng-class="{ 'ng-click-remove-active': rootjuicelist, 'ng-click-remove': !rootjuicelist }" class="active menufade" style="background-color: #337ab7;">
+			<li heading="Juice List" ng-click="navigateTo('root.juicelist')" ng-if="rootjuicelist" ng-class="{ 'ng-click-remove-active': rootjuicelist, 'ng-click-remove': !rootjuicelist }" class="active menufade" style="background-color: #0000FF;">
 				<img class="img-responsive" style="width: 32px; float: left; margin: 20px;" src="images/notifications_image.png" />
 				<div style="display: block; padding: 15px 15px;" ng-click="select()">
 					<span>Juice List</span>
-					<img class="img-responsive" style="float: right; width: 32px;" src="images/rightarrow_image.png" />
+					<i class="pull-right glyphicon glyphicon-chevron-right"></i>
 				</div>
 			</li>
-			<li heading="Juice Queue" ng-show="$root.currentUser.IsAdmin" ng-if="rootjuicequeue" ng-click="navigateTo('root.juicequeue')" class="active menufade" style="background-color: #337ab7;">
+			<li heading="Juice Queue" ng-show="$root.currentUser.IsAdmin" ng-if="rootjuicequeue" ng-click="navigateTo('root.juicequeue')" class="active menufade" style="background-color: #0000FF;">
 				<img class="img-responsive" style="width: 32px; float: left; margin: 20px;" src="images/notifications_image.png" />
 				<div style="display: block; padding: 15px 15px;" ng-click="select()">
 					<span>Juice Queue</span>
-					<img class="img-responsive" style="float: right; width: 32px;" src="images/rightarrow_image.png" />
+					<i class="pull-right glyphicon glyphicon-chevron-right"></i>
 				</div>
 			</li>
-			<li heading="Manage Juice" ng-show="$root.currentUser.IsAdmin" ng-if="rootmanagejuice" ng-click="navigateTo('root.managejuice')" class="active menufade" style="background-color: #337ab7;">
+			<li heading="Manage Juice" ng-show="$root.currentUser.IsAdmin" ng-if="rootmanagejuice" ng-click="navigateTo('root.managejuice')" class="active menufade" style="background-color: #0000FF;">
 				<img class="img-responsive" style="width: 32px; float: left; margin: 20px;" src="images/notifications_image.png" />
 				<div style="display: block; padding: 15px 15px;" ng-click="select()">
 					<span>Manage Juice</span>
-					<img class="img-responsive" style="float: right; width: 32px;" src="images/rightarrow_image.png" />
+					<i class="pull-right glyphicon glyphicon-chevron-right"></i>
 				</div>
 			</li>
-			<li heading="My Juices" ng-click="navigateTo('root.usersjuices')" ng-if="rootusersjuices" class="active menufade" style="background-color: #337ab7;">
+			<li heading="My Juices" ng-click="navigateTo('root.usersjuices')" ng-if="rootusersjuices" class="active menufade" style="background-color: #0000FF;">
 				<img class="img-responsive" style="width: 32px; float: left; margin: 20px;" src="images/notifications_image.png" />
 				<div style="display: block; padding: 15px 15px;" ng-click="select()">
 					<span>My Juices</span>
-					<img class="img-responsive" style="float: right; width: 32px;" src="images/rightarrow_image.png" />
+					<i class="pull-right glyphicon glyphicon-chevron-right"></i>
 				</div>
 			</li>
-			<li heading="About Us" ng-click="navigateTo('root.aboutus')" ng-if="rootaboutus" class="active menufade" style="background-color: #337ab7;">
+			<li heading="About Us" ng-click="navigateTo('root.aboutus')" ng-if="rootaboutus" class="active menufade" style="background-color: #0000FF;">
 				<img class="img-responsive" style="width: 32px; float: left; margin: 20px;" src="images/notifications_image.png" />
 				<div style="display: block; padding: 15px 15px;" ng-click="select()">
 					<span>About Us</span>
-					<img class="img-responsive" style="float: right; width: 32px;" src="images/rightarrow_image.png" />
+					<i class="pull-right glyphicon glyphicon-chevron-right"></i>
 				</div>
 			</li>
 		</ul>

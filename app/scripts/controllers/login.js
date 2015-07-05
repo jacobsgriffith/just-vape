@@ -7,6 +7,7 @@ angular.module('justVapeApp').controller('LoginModalCtrl', function ($scope, Use
 			$scope.$close(user);
 		});
 	};
+	
 	this.gotoRegister = function() {
 		this.cancel();
 		$state.go('root.register');

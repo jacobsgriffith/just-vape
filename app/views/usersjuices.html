@@ -6,12 +6,9 @@
 					<div class="panel-title">
 						<div class="accordion-toggle">
 							<h2>
-								<div style="margin-left: 50px;">
-									<span>{{usersJuice.Juice.Name}} - </span>
-									<span style="font-size: 20px; color: blue;">{{usersJuice.Bottle.Name}}</span>
-								</div>
-								<i class="pull-right glyphicon glyphicon-chevron-right" ng-class="{'glyphicon-chevron-down': usersJuice.expanded, 'glyphicon-chevron-right': !usersJuice.expanded}" style="margin-right: 20px; margin-top: -30px;"></i>
-								<i class="pull-right glyphicon" ng-class="{'glyphicon-check': usersJuice.Done, 'glyphicon-tasks': !usersJuice.Done}" style="margin-right: 70px; margin-top: -30px;"></i>
+								<span class="pull-left">{{usersJuice.Juice.Name}}</span>
+								<i class="pull-right glyphicon glyphicon-chevron-right" ng-class="{'glyphicon-chevron-down': usersJuice.expanded, 'glyphicon-chevron-right': !usersJuice.expanded}" style="margin-right: 20px;"></i>
+								<i class="pull-right glyphicon" ng-class="{'glyphicon-check': usersJuice.Done, 'glyphicon-tasks': !usersJuice.Done}" style="margin-right: 20px;"></i>
 							</h2>
 						</div>
 					</div>
@@ -22,7 +19,13 @@
 							<h3 class="text-center text-danger" ng-class="{ 'text-danger': !usersJuice.Done, 'text-success': usersJuice.Done}">{{usersJuice.Done ? 'Done' : usersJuice.Mixing ? 'Mixing in progress' : 'Order received'}}</h3>
 						</div>
 						<div class="col-sm-12">
+							<span style="font-size: 20px; color: blue;">{{usersJuice.Bottle.Name}}</span>
+						</div>
+						<div class="col-sm-12">
 							<label class="text-center">{{usersJuice.Juice.Description}}</label>
+						</div>
+						<div class="col-sm-12">
+							<label class="text-center" style="font-size: 20px" ng-if="usersJuice.Rating">You gave this juice a rating of {{usersJuice.Rating}} stars!</label>
 						</div>
 						<div class="col-sm-12">
 							<a href="#" onclick="return false;" class="btn btn-success pull-right" ng-show="!usersJuice.rateAndComment && usersJuice.Done" ng-click="usersJuice.rateAndComment = !usersJuice.rateAndComment">Rate and comment</a>
@@ -39,7 +42,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="panel panel-default" ng-if="usersJuices.length == 0" style="font-size: 20px; padding: 20px;">
+			<div class="panel panel-default" ng-if="usersJuices.length == 0 && !loading" style="font-size: 20px; padding: 20px;">
 				<div class="row">
 					<span>You haven't ordered any juices yet!</span>
 				</div>

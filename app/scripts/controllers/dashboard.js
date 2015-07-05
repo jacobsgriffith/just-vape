@@ -32,22 +32,7 @@ angular.module('justVapeApp').controller('DashboardCtrl', ['$scope', '$state', '
 	$scope.navigateTo = function(state) {
 		$scope[state.replace('.', '')] = false;
 		$timeout(function() {
-			$scope.rootjuicelist = false;
-		}, 200);
-		$timeout(function() {
-			$scope.rootjuicequeue = false;
-		}, 300);
-		$timeout(function() {
-			$scope.rootmanagejuice = false;
-		}, 400);
-		$timeout(function() {
-			$scope.rootusersjuices = false;
-		}, 500);
-		$timeout(function() {
-			$scope.rootaboutus = false;
-		}, 600);
-		$timeout(function() {
 			$state.go(state);
-        }, 600);
+        }, 200);
 	}
 }]);

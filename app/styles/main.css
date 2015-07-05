@@ -105,11 +105,13 @@ body {
 }
 
 .menufade.ng-leave {
-  transition:.5s linear all;
+  transition:.2s linear all;
+  transform: scale(1);
   left: 0px;
 }
 .menufade.ng-leave.ng-leave-active {
-  left: -1000px;
+  transform: scale(.95);
+  left: 0px;
 }
 
 .juiceexpand {

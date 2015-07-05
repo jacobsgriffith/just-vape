@@ -13,14 +13,13 @@ angular.module('justVapeApp').controller('JuiceListCtrl', ['$scope', '$http', 'R
 	}, $scope.slideTiming);
 	
 	$scope.slideInCategory = function(category) {
-		$scope.slideTiming += 50;
+		$scope.slideTiming += 200;
 		$timeout(function() {
 			category.slideIn = true;
 		}, $scope.slideTiming);
 	}
 	
 	$scope.slideOutCategory = function(category) {
-		$scope.slideTiming += 50;
 		$timeout(function() {
 			if (category == 'All') {
 				$scope.allCategorySlideIn = false;
@@ -28,12 +27,20 @@ angular.module('justVapeApp').controller('JuiceListCtrl', ['$scope', '$http', 'R
 				category.slideIn = false;
 			}
 		}, $scope.slideTiming);
+		$scope.slideTiming += 200;
 	}
 	
 	$scope.slideInJuice = function(juice) {
-		$scope.slideTiming += 50;
 		$timeout(function() {
 			juice.slideIn = true;
+		}, $scope.slideTiming);
+		$scope.slideTiming += 50;
+	}
+	
+	$scope.slideOutJuice = function(juice) {
+		$scope.slideTiming += 200;
+		$timeout(function() {
+			juice.slideIn = false;
 		}, $scope.slideTiming);
 	}
 	
@@ -53,22 +60,32 @@ angular.module('justVapeApp').controller('JuiceListCtrl', ['$scope', '$http', 'R
 	$scope.selectCategory = function(category) {
 		$scope.slideTiming = 0;
 		$scope.slideOutCategory(category);
-		for (var i = 0; i < $scope.categories.length; i++) {
-			$scope.slideOutCategory($scope.categories[i]);
-		}
-		if (category == 'All') {
-			$timeout(function() {
+		$timeout(function() {
+			if (category == 'All') {
 				$scope.selectedCategory = category;
-			}, $scope.categories.length * 50);
-		} else {
-			$scope.slideOutCategory('All');
-			$timeout(function() {
+			} else {
 				$scope.selectedCategory = category.Name;
-			}, $scope.categories.length * 50);
-		}
+			}
+		}, 200);
+		$timeout(function() {
+			$scope.slideTiming = 50;
+			var filtered = [];
+			angular.forEach($scope.juices, function(item) {		
+				if ($scope.selectedCategory == 'All' || $scope.selectedCategory == item.Category.Name) {
+					if (!$scope.searchText || item.Name.toLowerCase().indexOf($scope.searchText.toLowerCase()) != -1) {
+						filtered.push(item);
+					}
+				}
+			});
+			
+			for (var i = 0; i < filtered.length; i++) {
+				$scope.slideInJuice(filtered[i]);
+			}
+		}, $scope.slideTiming + 50);
 	}
 	
 	$scope.unselectCategory = function() {
+		$scope.slideTiming = 50;
 		$scope.selectedCategory = null;
 		$scope.allCategorySlideIn = true;
 		for (var i = 0; i < $scope.categories.length; i++) {

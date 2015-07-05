@@ -5,7 +5,7 @@ angular.module('justVapeApp').controller('UsersJuicesCtrl', ['$scope', '$http', 
 	$scope.rateAndComment = false;
 	$scope.rating;
 	$scope.comment;
-	
+	$scope.loading = true;
 	$scope.hoveringOver = function(value) {
 		$scope.overStar = value;
 		$scope.percent = 100 * (value / $scope.max);
@@ -25,5 +25,6 @@ angular.module('justVapeApp').controller('UsersJuicesCtrl', ['$scope', '$http', 
 	
 	juiceQueueRest.getList({userId: $rootScope.currentUser.Id}).then(function(usersJuices) {
 		$scope.usersJuices = usersJuices;
+		$scope.loading = false;
 	});
 }]);

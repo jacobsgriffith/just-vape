@@ -42,7 +42,10 @@ angular.module('justVapeApp').controller('OrderJuiceCtrl', ['$scope', '$rootScop
 			cardExpYear: $scope.cardExpYear,
 			cardCode: $scope.cardCode
 		}).then(function(msg) {
-			$scope.showAddCard = false;
+			if (msg != 'Invalid Card') {
+				$scope.showAddCard = false;
+				$rootScope.currentUser.ProfileId = msg;
+			}
 		});
 	}
 	

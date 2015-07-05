@@ -49,17 +49,15 @@
 					<div class="panel-title">
 						<div class="accordion-toggle">
 							<h2 ng-show="!juice.editMode">
-								<div style="margin-left: 50px;">
-									<span ng-click="juice.expanded = !juice.expanded">{{juice.Name}}</span>
-								</div>
-								<i class="pull-right glyphicon glyphicon-edit" ng-click="juice.expanded = true; juice.editMode = !juice.editMode" style="margin-right: 20px; margin-top: -30px;"></i>
-								<i class="pull-right glyphicon glyphicon-chevron-right" ng-click="juice.expanded = !juice.expanded" ng-class="{'glyphicon-chevron-down': juice.expanded, 'glyphicon-chevron-right': !juice.expanded}" style="margin-right: 60px; margin-top: -30px;"></i>
+								<span class="pull-left" ng-click="juice.expanded = !juice.expanded">{{juice.Name}}</span>
+								<i class="pull-right glyphicon glyphicon-edit" ng-click="juice.expanded = true; juice.editMode = !juice.editMode" style="margin-right: 20px;"></i>
+								<i class="pull-right glyphicon glyphicon-chevron-right" ng-click="juice.expanded = !juice.expanded" ng-class="{'glyphicon-chevron-down': juice.expanded, 'glyphicon-chevron-right': !juice.expanded}" style="margin-right: 20px;"></i>
 							</h2>
 							<div class="col-md-12" ng-show="juice.editMode">
-								<textArea placeholder="Juice Name" class="form-control form-inline text-center" rows="2" ng-model="juice.Name">
+								<textArea placeholder="Juice Name" class="form-control form-inline text-center" rows="2" style="width: 200px" ng-model="juice.Name">
 								</textArea>
 								<i class="pull-right glyphicon glyphicon-remove" ng-show="juice.Id != -1" ng-click="removeJuice(juice)" style="margin-right: 20px; margin-top: -30px;"></i>
-								<i class="pull-right glyphicon glyphicon-chevron-right" ng-click="juice.expanded = !juice.expanded" ng-class="{'glyphicon-chevron-down': juice.expanded, 'glyphicon-chevron-right': !juice.expanded}" style="margin-right: 60px; margin-top: -30px;"></i>
+								<i class="pull-right glyphicon glyphicon-chevron-right" ng-click="juice.expanded = !juice.expanded" ng-class="{'glyphicon-chevron-down': juice.expanded, 'glyphicon-chevron-right': !juice.expanded}" style="margin-right: 20px; margin-top: -30px;"></i>
 							</div>
 						</div>
 					</div>
@@ -80,7 +78,7 @@
 										<option ng-repeat="category in categories" value="{{category.Id}}" ng-selected="category.Id == juice.Category.Id">{{category.Name}}</option>
 									</select>
 								</div>
-								<textArea placeholder="Juice Description" class="form-control form-inline text-center" rows="2" ng-model="juice.Description">
+								<textArea placeholder="Juice Description" class="form-control form-inline text-center" rows="2" style="width: 200px" ng-model="juice.Description">
 								</textArea>
 								<i class="pull-right glyphicon glyphicon-save" style="margin-right: 20px; margin-top: -30px;" ng-click="updateJuice(juice)"></i>
 							</div>
